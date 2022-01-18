@@ -43,11 +43,15 @@ Bare Minimum Requirements
             출력값:
                 ['짝수', '홀수', '짝수', '홀수', '짝수', '짝수']
 """
+def part2_is_square_num(a):
+  return list(map(lambda x : x*x, a))
 
-def part2_is_square_num(a):   
-    ##### 소스코드를 작성해주세요 #####
-    pass # 지워주세요
+def part2_is_odd_num(a): 
+  return list(map(lambda x : "짝수" if x % 2 == 0 else "홀수", a))
 
-def part2_is_odd_num(a):   
-    ##### 소스코드를 작성해주세요 #####
-    pass # 지워주세요
+print(part2_is_square_num([1, 2, 3, 4, 5]))
+print(part2_is_square_num([2, 4, 6, 8, 10, 12]))
+
+print(part2_is_odd_num([1, 4, 9, 16, 25]))
+print(part2_is_odd_num([2, 3, 6, 7, 10, 12]))
+

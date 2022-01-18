@@ -27,6 +27,20 @@ Advanced Requirements
             's u w x T V Y Z'
 """
 
+from functools import reduce
 def part4(s):
-    ##### 소스코드를 작성해주세요 #####
-    pass # 지워주세요
+  answer = []
+  # ASCII : 97 == a, 122 == z, 65 == A, 90 == Z
+  
+  # s를 ' '단위로 split -> 중복 제거 -> list로 변환 -> 정렬
+  s = sorted(list(set(s.split(' '))))
+
+  answer = list(map(lambda x : ord(x), s))  # ascii code(숫자)로 변환
+
+  answer = list(map(lambda x : chr(x - 32) if x > 96 else chr(x + 32), answer)) # Lower -> Upper, Upper -> lower
+  
+  answer = reduce(lambda i1, i2 : i1 + ' ' + i2, answer)  # 이어붙이기 ( list to string )
+  return answer
+
+print(part4('c t A'))
+print(part4('z X y W v U t S'))

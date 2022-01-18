@@ -17,7 +17,18 @@ Bare Minimum Requirements
         출력값:
             [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 """
-
+import math
 def part1():
-    ##### 소스코드를 작성해주세요 #####
-    pass # 지워주세요
+  max = int(math.sqrt(101))
+  return [i*i for i in range(1, max+1)]
+print(part1())
+
+# def part1():
+#   num = 1
+#   squared = 1
+#   answer = []
+#   while(squared <= 101) :
+#     answer.append(squared)
+#     num = num+1
+#     squared = np.square(num)
+#   return answer

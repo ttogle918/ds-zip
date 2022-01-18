@@ -26,7 +26,14 @@ Bare Minimum Requirements
         출력값:
             'A D U X b c y z'
 """
-
+from functools import reduce
 def part3(s):
-    ##### 소스코드를 작성해주세요 #####
-    pass # 지워주세요
+  if len(s) == 0 :
+    return
+
+  s = sorted(set(s.split(' ')))
+
+  return reduce(lambda i1, i2 : i1 + ' ' + i2, s)  # 이어붙이기 ( list to string )
+
+print(part3('a T C'))
+print(part3('z X y D c A b U'))

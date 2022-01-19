@@ -19,5 +19,10 @@ Bare Minimum Requirements
 """
 
 def part2(num):
-    ##### 소스코드를 작성해주세요 #####
-    pass # 문제를 푸실 때 pass를 지워주세요
+  mymax = num[0]
+  for i in num :
+    if i > mymax : 
+      mymax = i 
+  return mymax
+
+print(part2([4, 8, 5, 11, 7, 2]))

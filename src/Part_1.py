@@ -15,7 +15,26 @@ Bare Minimum Requirements
     출력값:
         [35, 70]
 """
+def checkPrime(num) :   # 공약수구하기
+  li = []
+  n = 2
+
+  while n < num/2 :
+    if num % n == 0 :
+      li.append(n)
+    n += 1
+
+  return (True, 0) if len(li) == 0 else (False, li)
 
 def part1():
-    ##### 소스코드를 작성해주세요 #####
-    pass # 지워주세요
+  num = 7 * 5
+  fin = int(100 / num)
+  return [i*num for i in range(1, fin+1)]
+
+  # if checkPrime(7)[0] or checkPrime(5)[0] :   # 한가지만 소수면, 서로소 관계이다.
+    # num = 7 * 5
+    # fin = int(100 / num)
+    # return [i*num for i in range(1, fin+1)]
+  
+  # li = list(set(checkPrime(7)[1] + checkPrime(5)[1]))
+  # ...

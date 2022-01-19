@@ -18,31 +18,57 @@ Extra Requirements
     pass 안에는 값이 들어가지 않을 수 있고 들어가야될 수도 있습니다.
     상황에 적절하게 수정해주세요.
 """
+# 1. 입력값 가위, 바위, 보, 1, 2, 3, 9, 게임종료 가능
+# 2. score 저장
+
+import random
 
 def rock_sciss_paper():
     def show_welcome_message():
         print(welcome_message)
 
 
-    def get_user_choice(pass):
-        pass
+    def get_choice(choice):
+       ###[1] 가위   [2] 바위   [3] 보    [9] 게임종료###
+      return choice_options[choice] 
 
 
-    def quit_game(pass):
+    def quit_game(score):
         print(quit_message)
         print("게임결과")
         print("-----")
+        print(score)
 
 
-    def compare_choices_and_get_result(pass):
-        pass
+    def compare_choices_and_get_result(user, computer):
+      if user == computer:
+        print("사용자 : ", user, ", ", "컴퓨터 : ", computer_choice)
+        return "무승부"
+      elif (user == get_choice("바위") and computer == get_choice("가위")) or (user == get_choice("보") and computer == get_choice("바위")) or (user == get_choice("가위") and computer == get_choice("보")):
+        print("사용자 : ", user, ", ", "컴퓨터 : ", computer_choice)
+        return "사용자승"
+      else:
+        print("사용자 : ", user, ", ", "컴퓨터 : ", computer_choice)
+        return "사용자패"
 
 
-    def display_result_message_and_update_score(pass):
-        pass
+    def set_score(s) :
+      score[s] += 1
+    
+    def display_result_message_and_update_score(result):
+        if result == "무승부":
+            print(tie_message)
+        elif result == "사용자승":
+            print(win_message)
+        else:
+            print(loss_message)
+        set_score(result)
 
-
-    score =  pass
+    score =  {
+      "사용자승": 0,
+      "무승부": 0,
+      "사용자패": 0
+    }
 
     welcome_message = "가위바위보 게임을 시작합니다."
     win_message = "사용자가 이겼습니다."
@@ -50,21 +76,38 @@ def rock_sciss_paper():
     tie_message = "무승부입니다."
     quit_message = "게임을 종료합니다."
 
-    choice_options = pass
+    choice_options = {
+      '1': 1, 
+      "가위" : 1,
+      '2': 2, 
+      "바위" : 2,
+      '3': 3, 
+      "보" : 3,
+      '9': 9, 
+      "게임종료" : 9
+    }
 
 
     show_welcome_message()
 
-
-    while user_choice != "게임종료":
-        keys = pass
-        computer_choice = random.choice(keys)
-        result = compare_choices_and_get_result(pass)
-        display_result_message_and_update_score(pass)
-
-
+    while True :
+      try : 
+        user_choice = input()
+        user_choice = get_choice(user_choice)
+        
+        if user_choice == 9 :
+          break
+      except KeyError as e:
+        print("범위 내로 입력해주세요!!!")
+        continue
+      
+      keys = ['1', '2', '3']  # list 내 랜덤값
+      computer_choice = get_choice(random.choice(keys))
+      result = compare_choices_and_get_result(user_choice, computer_choice)
+      display_result_message_and_update_score(result)
+      
     print('')
-    quit_game(pass)
+    quit_game(score)
 
 
 if __name__ == "__main__":

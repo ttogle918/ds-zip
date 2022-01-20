@@ -31,10 +31,16 @@ OOP에서 중요한 것은 기능별로 정확한 설계입니다.
 """
 
 
+from unicodedata import name
+
+
 class Person:
+    def __init__(self, name, age) :
+        self.name = name
+        self.age = age
+
     def introduce(self):
-        print('안녕하세요! 제 이름은 {}, {}살 입니다!'.format(self.name, self.age))
-        
+        print(f'안녕하세요! 제 이름은 {self.name}, {self.age}살 입니다!'.format(self.name, self.age))
         
 class Book:
     def __init__(self, name, librarian):
@@ -42,37 +48,44 @@ class Book:
         self.librarian = librarian
 
 
-class Librarian:
-    def __init__():
-        ##### 소스코드를 작성해주세요 #####
-        pass # 문제를 푸실 때 pass를 지워주세요
+class Librarian(Person):
+    def __init__(self, name, age):
+        Person.__init__(self, name, age)
+        self.booklist = []
 
-    def add_book():   #새책을 받거나, 반납받는 함수
-        ##### 소스코드를 작성해주세요 #####
-        pass # 문제를 푸실 때 pass를 지워주세요
+    def add_book(self, book):   #새책을 받거나, 반납받는 함수
+        self.booklist.append(book)
+        return True
 
-    def remove_book():    #책을 빌려주는 함수
-        ##### 소스코드를 작성해주세요 #####
-        pass # 문제를 푸실 때 pass를 지워주세요
-
+    def remove_book(self, book):    #책을 빌려주는 함수
+        try :
+          self.booklist.remove(book)
+        except ValueError as e :
+          print("remove Error : ", book)
+          return False
+        return True
     def get_book_list(self):    #관리중인 책 목록을 반환하는 함수
-        ##### 소스코드를 작성해주세요 #####
-        pass # 문제를 푸실 때 pass를 지워주세요
+        return self.booklist
 
 
-class User:
-    def __init__():
-        ##### 소스코드를 작성해주세요 #####
-        pass # 문제를 푸실 때 pass를 지워주세요
+class User(Person):
 
-    def borrow_book(): #책을 대출하는 함수
-        ##### 소스코드를 작성해주세요 #####
-        pass # 문제를 푸실 때 pass를 지워주세요
+    def __init__(self, name, age):
+        Person.__init__(self, name, age)
+        self.__booklist = []
+    def borrow_book(self, book): #책을 대출하는 함수
+        self.__booklist.append(book)
+        return True
 
-    def return_book(): #책을 반납하는 함수
-        ##### 소스코드를 작성해주세요 #####
-        pass # 문제를 푸실 때 pass를 지워주세요
+    def return_book(self, book): #책을 반납하는 함수
+        try :
+          self.__booklist.remove(book)
 
-    def get_borrowed_list():    #빌린 책 목록을 반환하는 함수
-        ##### 소스코드를 작성해주세요 #####
-        pass # 문제를 푸실 때 pass를 지워주세요
+        except ValueError as e :
+          print("remove Error : ", book)
+          return False
+        
+        return True
+        
+    def get_borrowed_list(self):    #빌린 책 목록을 반환하는 함수
+        return self.__booklist

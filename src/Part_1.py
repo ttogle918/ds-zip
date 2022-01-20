@@ -17,7 +17,7 @@ class CarOwner:
             CarOwner 클래스의 생성자 메소드를 작성해주세요.
             매개변수를 수정하거나 추가하지 말아주세요.
         """
-        pass
+        self.name = name
 
 
     def concentrate(self):
@@ -26,7 +26,7 @@ class CarOwner:
             자동차 주인 이름에 따라 
             '{자동차주인이름} can not do anything else'문구를 반환해주는 메소드를 작성해주세요.
         """
-        pass
+        return self.name + ' can not do anything else'
 
 
 class Car:
@@ -43,8 +43,7 @@ class Car:
             Car 클래스의 생성자 메소드를 작성해주세요.
             매개변수를 수정하거나 추가하지 말아주세요
         """
-        pass
-
+        self.owner = CarOwner(owner_name)
 
     def drive(self):
         """
@@ -57,15 +56,17 @@ class Car:
             문자열에서 줄바꿈을 하고싶은 경우 '\n'을 사용해주세요.
             '\n'에 대해서 더 공부하고 싶으신 분은 '이스케이프 문자' 라고 검색해보세요
         """
-        pass
+        return self.owner.concentrate() + '\n' + self.owner.name + ' is driving now.'
 
 
-class SelfDrivingCar:
+class SelfDrivingCar(Car):
     """
     문제 5. 
         이 자동차는 자율주행 자동차입니다! 
         자동차를 상속받아주세요!
     """
+    def __init__(self, name):
+        Car.__init__(self, name)
     def drive(self):
         """
         문제 5.
@@ -75,5 +76,5 @@ class SelfDrivingCar:
             상속을 받았는데.. drive메소드를 다시 선언해도 괜찮을까요?
             메소드 오버라이딩 개념을 다시 생각해보며 코드를 작성해주세요.
         """
-        pass
+        return 'Car is driving by itself'
 

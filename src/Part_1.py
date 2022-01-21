@@ -30,8 +30,8 @@ def part1_q1():
 
 
 def part1_q1_answer():
-    time_complexity = ANSWER
-    reason = "이유를 작성해주세요"
+    time_complexity = CONSTANT
+    reason = "변수를 선언만 하였고, loop문이 존재하지 않는다."
 
     return (time_complexity, reason)
 
@@ -44,8 +44,8 @@ def part1_q2(li):
 
 
 def part1_q2_answer():
-    time_complexity = ANSWER
-    reason = "이유를 작성해주세요"
+    time_complexity = LINEAR
+    reason = "range(li)만큼 loop를 돈다.loop문이 li의 모든 범위를 탐색한다."
 
     return (time_complexity, reason)
 
@@ -60,7 +60,7 @@ def part1_q3(li):
 
 
 def part1_q3_answer():
-    time_complexity = ANSWER
-    reason = "이유를 작성해주세요"
+    time_complexity = QUADRATIC
+    reason = "range(li) * range(li)만큼 loop를 실행한다. li의 범위를 i가 탐색하는데, i번째에서 또 li의 범위를 탐색하는 j가 있다."
 
     return (time_complexity, reason)

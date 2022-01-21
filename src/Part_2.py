@@ -37,8 +37,8 @@ def part2_q1(li):
     
 
 def part2_q1_answer():
-    time_complexity = ANSWER
-    reason = "이유를 작성해주세요"
+    time_complexity = QUADRATIC
+    reason = "O(n) + O(n^2) = O(n^2)이다."
 
     return (time_complexity, reason)
 
@@ -49,8 +49,8 @@ def part2_q2(li):
 
 
 def part2_q2_answer():
-    time_complexity = ANSWER
-    reason = "이유를 작성해주세요"
+    time_complexity = CONSTANT
+    reason = "range(li)만큼 loop를 실행해야하지만, 첫번째 실행문에서 break가 나왔으니 바로 빠져나오게된다."
 
     return (time_complexity, reason)
 
@@ -65,7 +65,7 @@ def part2_q3(num):
 
 
 def part2_q3_answer():
-    time_complexity = ANSWER
-    reason = "이유를 작성해주세요"
+    time_complexity = LOGARITHMIC
+    reason = "cur이 num보다 작을 동안 loop를 돈다. 그런데 cur이 매번 2배수로 높아지기 때문에 2의 지수승만큼 높아지기 때문에, 실행횟수는 그의 역함수인 log2만큼 늘어나게 된다(n < log n < n^2)"
 
     return (time_complexity, reason)

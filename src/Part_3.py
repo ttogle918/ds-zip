@@ -38,9 +38,37 @@ Advanced Requirements
             [(0,7), (1,7), (2,3)]
 
 """
-
 def part3(input_list, value_to_search):
-    pass
+  answer = []
+  for n, li in enumerate(input_list) :
+    length_input = len(li)
+    start = 0
+    end = length_input
+    if value_to_search < li[0] or li[-1] < value_to_search :    # 찾을 값이 min보다 작고, max보다 클 때 (not exist)
+      continue
+    if li[-1] == value_to_search :    # max일 때  -> 바로 찾음!
+      answer.append((n, length_input-1))
+      continue
+    if li[0] == value_to_search :   # min일 때 -> 바로 찾음!
+      answer.append((n, 0))
+      continue
+
+    mid = int((end - start) / 2)    # 중간값을 구해서 target값과 비교해본다.
+
+    while end - start >= 1 :
+      if li[mid] == value_to_search :
+        answer.append((n, mid))
+        break
+      elif li[mid] < value_to_search :    # 중간값이 타겟값보다 작다면, 중간값을 시작값으로 하여 다시 탐색
+        start = mid
+        mid = start + int((end - start) / 2)
+        end = mid
+      elif value_to_search < li[mid] :    # 중간값이 타겟값보다 크다면, 중간값을 마지막값으로 하여 다시 탐색 ( 리스트를 반씩 쪼개서 찾아본다. )
+        end = mid
+        mid = start + int((end - start) / 2)
+        start = mid
+  print(answer)
+  return answer
 
 
 """
@@ -59,8 +87,8 @@ EXPONENTIAL = 'O(c^n)'
 
 
 def part3_timecomplexity():
-    time_complexity = ANSWER
-    reason = "이유를 작성해주세요"
+    time_complexity = LINEARITHMIC
+    reason = "모든 리스트를 찾기 위해서 list의 개수(n으로 가정)를 돌았고, 그 내부에서 /2를 하면서 범위를 좁혀 나갔기 때문에 O(log 2)이다. loop문 내에 loop문이기 때문에 곱하면 O(nlogn)이다."
 
     return (time_complexity, reason)
     

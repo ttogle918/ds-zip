@@ -1,3 +1,5 @@
+import re
+
 class Human:
     def __init__(self, name, age):
         self.name = name
@@ -25,7 +27,8 @@ humans = [
 # 출력조건 : 'D'로 시작하는 이름을 출력하자.
 def quesion1():
     print("Starts with D:")
-    a = pass
+    a = [human.name for human in humans if human.name[0] == 'D']
+      
     print(a)
     return(a)
 
@@ -33,7 +36,7 @@ def quesion1():
 # 출력조건 : 'e'로 끝나는 이름을 출력하자.
 def quesion2():
     print("Ends with e:")
-    b = pass
+    b = [human.name for human in humans if human.name[-1] == 'e']
     print(b)
     return(b)
 
@@ -41,7 +44,7 @@ def quesion2():
 # 출력조건 : 이름스펠링이 'C' 와 'G' 사이로 시작하는 이름을 출력하자.
 def quesion3():
     print("Starts between C and G, inclusive:")
-    c = pass
+    c = [human.name for human in humans if human.name[0] in 'CDEFG']
     print(c)
     return(c)
 
@@ -49,7 +52,7 @@ def quesion3():
 # 출력조건 : 주어진 모든 연령에 대해 10을 더한상태의 연령을 출력하자.
 def quesion4():
     print("Ages plus 10:")
-    d = pass
+    d = [human.age+10 for human in humans]
     print(d)
     return(d)
 
@@ -57,7 +60,7 @@ def quesion4():
 # 출력조건 : '이름-연령'의 형식으로 이름과 연령을 출력하자.
 def quesion5():
     print("Name hyphen age:")
-    e = pass
+    e = [human.name + '-' + str(human.age) for human in humans]
     print(e)
     return(e)
 
@@ -65,7 +68,7 @@ def quesion5():
 # 출력조건 : '이름-연령'의 형식으로 27~32세의 연령을 갖고 있는 사람의 이름과 연령을 출력하자.
 def quesion6():
     print("Names and ages between 27 and 32:")
-    f = pass
+    f = [human.name + '-' + str(human.age) for human in humans if 27 <= human.age and human.age <= 32]
     print(f)
     return(f)
 
@@ -73,7 +76,7 @@ def quesion6():
 # 출력조건 : ("이름", 연령)의 형식으로 이름을 대문자로 변경시키고 연령에 5를 더한상태의 이름과 연령을 출력하자.
 def quesion7():
     print("All names uppercase:")
-    g = pass
+    g = [(human.name.upper(), human.age+5) for human in humans]
     print(g)
     return(g)
 
@@ -81,6 +84,6 @@ def quesion7():
 # 출력조건 : 모든 연령을 제곱근으로 변경시키고, 제곱근에 대해 소수점 2째자리까지 표현하는 연령을 출력하자. (결과값은 반올림을 해야하며 반올림관련 내장함수를 활용해야 합니다.)
 def quesion8():
     print("Square root of ages:")
-    h = pass
+    h = [round(human.age ** (1/2), 2) for human in humans]
     print(h)
     return(h)

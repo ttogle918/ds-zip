@@ -16,7 +16,7 @@ def first_test(): # 해당 함수의 코드를 수정하지 마세요
             test_list[first_index] * test_list[second_index]
 
 def first_test_time_complexity():
-    return ANSWER # 답안을 작성해주세요.
+    return QUADRATIC
 
 
 def second_test(): # 해당 함수의 코드를 수정하지 마세요
@@ -31,7 +31,7 @@ def second_test(): # 해당 함수의 코드를 수정하지 마세요
             print("No")
 
 def second_test_time_complexity():
-    return ANSWER  # 답안을 작성해주세요.
+    return LINEAR  # 답안을 작성해주세요.
 
 
 def third_test(): # 해당 함수의 코드를 수정하지 마세요
@@ -47,7 +47,7 @@ def third_test(): # 해당 함수의 코드를 수정하지 마세요
                 print("홀수")
 
 def third_test_complexity():
-    return ANSWER # 답안을 작성해주세요.
+    return QUADRATIC # 답안을 작성해주세요.
 
 
 def fourth_test(n): # 해당 함수의 코드를 수정하지 마세요
@@ -57,7 +57,7 @@ def fourth_test(n): # 해당 함수의 코드를 수정하지 마세요
         return 1 + fourth_test(n-1)
 
 def fourth_test_time_complexity():
-    return ANSWER # 답안을 작성해주세요.
+    return LINEAR # 답안을 작성해주세요.
 
 
 def fifth_test(n): # 해당 함수의 코드를 수정하지 마세요
@@ -67,7 +67,7 @@ def fifth_test(n): # 해당 함수의 코드를 수정하지 마세요
         return 1 + fifth_test(n-5)
 
 def fifth_test_time_complexity():
-    return ANSWER # 답안을 작성해주세요.
+    return LINEAR # 답안을 작성해주세요.
 
 
 def sixth_test(n): # 해당 함수의 코드를 수정하지 마세요
@@ -80,5 +80,5 @@ def sixth_test(n): # 해당 함수의 코드를 수정하지 마세요
         return 1 + sixth_test(n-5)
 
 def sixth_test_time_complexity():
-    return ANSWER # 답안을 작성해주세요.
+    return QUADRATIC # 답안을 작성해주세요.
     

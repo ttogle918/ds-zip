@@ -13,3 +13,34 @@
 
 ###### 클래스 생성 ######
 
+class Vehicle:
+    def __init__(self):
+      pass
+
+class GroundVehicle(Vehicle):
+    def __init__(self):
+        Vehicle.__init__(self)
+
+class Car(GroundVehicle):
+    def __init__(self):
+        GroundVehicle.__init__(self)
+
+
+class Motorcycle(GroundVehicle):
+    def __init__(self):
+        GroundVehicle.__init__(self)
+
+
+
+class FlightVehicle(Vehicle):
+    def __init__(self):
+        Vehicle.__init__(self)
+
+
+class Starship(FlightVehicle):
+    def __init__(self):
+        FlightVehicle.__init__(self)
+
+class Airplane(FlightVehicle):
+    def __init__(self):
+        FlightVehicle.__init__(self)

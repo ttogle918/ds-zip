@@ -43,8 +43,15 @@ class Deque:
             반환값은 없습니다.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
+        node = Node(item)
 
+        if self.top == None and self.bottom == None :
+          self.top = node
+          self.bottom = node
+          return
+
+        self.bottom.next = node
+        self.bottom = node
 
     def appendleft(self, item):
         """
@@ -57,7 +64,15 @@ class Deque:
             반환값은 없습니다.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
+        node = Node(item)
+
+        if self.top == None and self.bottom == None :
+          self.top = node
+          self.bottom = node
+          return
+
+        node.next = self.top
+        self.top = node
 
 
     def pop(self):
@@ -72,8 +87,27 @@ class Deque:
             만약 삭제한 값이 없다면 None을 반환해주세요.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
+        if self.bottom == None:
+          return None
 
+        value = self.bottom.value
+
+        if self.top == self.bottom :  # node가 한 개 있었다면? -> 0개
+          self.top == None
+          self.bottom = None    # delete
+          return value
+
+        # bottom 지정하기 위해 순회
+        node = self.top
+        
+        # bottom 이전 값 구하기
+        while node.next != self.bottom :
+          node = node.next
+
+        node.next = None    # bottom 값을 없애기
+        self.bottom = node
+
+        return value
 
     def popleft(self):
         """
@@ -87,7 +121,11 @@ class Deque:
             만약 삭제한 값이 없다면 None을 반환해주세요.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
+        if self.top == None : 
+          return None
+        value = self.top.value
+        self.top = self.top.next
+        return value
 
 
     def ord_desc(self):
@@ -101,4 +139,26 @@ class Deque:
             queue내부에 있는 값을 리스트 형태로 반환해주세요.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
+        rtn_list = []
+        node = self.top
+        while node :
+          rtn_list.append(node.value)
+          node = node.next
+        return rtn_list
+
+
+q = Deque()
+q.append(1)
+q.append(2)
+q.append(3)
+print(q.ord_desc())
+
+q.appendleft(0)
+print(q.ord_desc())
+
+q.pop()
+print(q.ord_desc())
+
+q.popleft()
+
+print(q.ord_desc())

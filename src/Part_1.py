@@ -18,8 +18,8 @@ class Queue():
         구현하시려는 로직에 맞게 해당 함수를 구현해주세요.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
-
+        self.data = []
+        self.length = 0   # empty
 
     def enqueue(self,item):
         """
@@ -32,8 +32,8 @@ class Queue():
             반환값은 없습니다.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
-
+        self.data.append(item)
+        self.length += 1
 
     def dequeue(self):
         """
@@ -47,8 +47,14 @@ class Queue():
             만약 삭제한 값이 없다면 None을 반환해주세요.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
+        if self.length == 0 :
+          return None
+        
+        value = self.data[0]
+        del self.data[0]
+        self.length -= 1
 
+        return value
 
     def return_queue(self):
         """
@@ -61,8 +67,7 @@ class Queue():
             queue내부에 있는 값을 리스트 형태로 반환해주세요.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
-
+        return self.data
 
 class Stack():
     def __init__(self):
@@ -72,8 +77,8 @@ class Stack():
         구현하시려는 로직에 맞게 해당 함수를 구현해주세요.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
-
+        self.data = []
+        self.top = -1   # empty
 
     def push(self, item):
         """
@@ -86,8 +91,8 @@ class Stack():
             반환값은 없습니다.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
-
+        self.data.append(item)
+        self.top += 1
 
     def pop(self):
         """
@@ -101,8 +106,10 @@ class Stack():
             만약 삭제한 값이 없다면 None을 반환해주세요.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
-
+        if self.top == -1 :
+          return None
+        self.top -= 1
+        return self.data.pop()
 
     def return_stack(self):
         """
@@ -115,6 +122,6 @@ class Stack():
             Stack내부에 있는 값을 리스트 형태로 반환해주세요.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
+        return self.data        
 
     

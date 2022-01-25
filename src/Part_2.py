@@ -27,8 +27,8 @@ class Node:
             반환값은 없습니다.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
-
+        self.value = value
+        self.next = next
 
 class linked_list:
     def __init__(self, value):
@@ -42,8 +42,8 @@ class linked_list:
             반환값은 없습니다.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
-
+        self.head = Node(value)
+        self.sum_node = 1   # 연결리스트의 노드의 개수 알려주는 것. 없어도 됨
 
     def add_node(self, value):
         """
@@ -56,8 +56,9 @@ class linked_list:
             반환값은 없습니다.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
-
+        node = Node(value, self.head)
+        self.head = node
+        self.sum_node += 1
 
     def del_node(self,value):
         """
@@ -71,8 +72,25 @@ class linked_list:
             만약 LinkedList에 값이 없다면 None 반환
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
+        if self.sum_node == 0 :   # empty linked list
+          return None
+        
+        node = self.head
+        if node.value == value :    # when head value is the value
+          self.head = self.head.next
+          self.sum_node -= 1
+          return value
+        
+        while node.next :
+          
+          if node.next.value == value :
+            node.next = node.next.next
+            self.sum_node -= 1
+            return value
 
+          node = node.next
+        
+        return None     # 다 돌았는데도 없더라.
 
     def ord_desc(self):
         """
@@ -86,8 +104,13 @@ class linked_list:
             리스트 형태로 반환해주세요.
         아래 pass를 지워주시고 코드를 작성해주시면 됩니다. 
         """
-        pass
+        rtn_list = []
+        node = self.head
+        for i in range(self.sum_node) :
+          rtn_list.insert(0, node.value)
+          node = node.next
 
+        return rtn_list
 
     def search_node(self,value):
         """
@@ -100,5 +123,9 @@ class linked_list:
             연결리스트에서 value를 가진 노드를 찾아 노드를 반환
             아래 pass를 지워주시고 코드를 작성해주시면 됩니다.
         """
-        pass
-
+        node = self.head
+        for i in range(self.sum_node) :
+          if node.value == value :
+            return node
+          node = node.next
+        return None

@@ -39,4 +39,6 @@ def recursion_advanced(str):
             input : 'Codestates'
             output: 'setatsedoC'
     """
-    pass
+    if len(str) == 1 :
+      return str
+    return str[-1] + recursion_advanced(str[:-1])

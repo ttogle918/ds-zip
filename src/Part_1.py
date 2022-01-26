@@ -45,9 +45,11 @@ def oneto100(num):
             출력값:
                 5050
     """
-    pass # 문제푸실 때 pass를 지워주세요 
+    if num == 1 :
+      return 1
+    return num + oneto100(num-1)
 
-
+# from sympy import *
 @counter    # 삭제하거나 변경하지 마세요!
 def factor(num1, num2):
     """
@@ -67,5 +69,22 @@ def factor(num1, num2):
             출력값:
                 20
     """
-    pass # 문제푸실 때 pass를 지워주세요 
+    # 둘 중 하나가 소수라면?   -> 그 배수가 아니라면 1이 최대공약수
+    # 소수인지 매번 판별하면.. 시간복잡도가 너무 커질 것 같은데..
 
+    # 둘 다 소수가 아니라면?   -> 최대공약수를 구하자.
+    if num1 == 1 :
+      return 1
+    if num1 > num2 :    # num2가 더 큼
+      t = num1
+      num1 = num2
+      num2 = t
+    # divisor = 2
+    # while divisor < num1 :
+      
+    # i = 2   # 무한루프
+    # while num1 > 1 :
+    #   if num1 % i == 0 and num2 % i == 0 :
+    #     return i * factor(num1/i, num2/i)
+    #   else :
+    #     i += 1

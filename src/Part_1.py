@@ -69,22 +69,15 @@ def factor(num1, num2):
             출력값:
                 20
     """
-    # 둘 중 하나가 소수라면?   -> 그 배수가 아니라면 1이 최대공약수
-    # 소수인지 매번 판별하면.. 시간복잡도가 너무 커질 것 같은데..
-
-    # 둘 다 소수가 아니라면?   -> 최대공약수를 구하자.
-    if num1 == 1 :
+    if num1 == 1 or num2 == 1 :
       return 1
-    if num1 > num2 :    # num2가 더 큼
+    
+    if num1 < num2 :
       t = num1
       num1 = num2
       num2 = t
-    # divisor = 2
-    # while divisor < num1 :
-      
-    # i = 2   # 무한루프
-    # while num1 > 1 :
-    #   if num1 % i == 0 and num2 % i == 0 :
-    #     return i * factor(num1/i, num2/i)
-    #   else :
-    #     i += 1
+
+    # 유클리드 호제법
+    if num1 % num2 == 0 :   # num1 % num2 == 0 -> 최대공약수 : num2가 성립
+      return num2
+    return factor(num2, num1 % num2)  # factor(num2, num1 % num2) ... == 0 이 될 때까지 반복하면 최대공약수가 나옴.

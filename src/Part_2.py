@@ -13,6 +13,9 @@ Bare Minimum Requirements
 	각 문제 코드 위에 작성된 '@counter'는 변경하지 마세요.
 """
 
+from unittest import result
+
+
 class counter:
     """
     해당 코드를 수정하지 마세요! 
@@ -28,36 +31,41 @@ class counter:
 
 @counter
 def print_to_zero_pos(n, result_list):
-	"""
-	# 문제 1.
-		1 이상의 양수를 입력받아 입력받은 수부터 0까지 구하는 함수를 작성해주세요.
-		재귀함수를 꼭 사용해주셔야합니다.
-		result_list안에 결과 값을 넣어주세요.
-		(result_list를 어떻게 사용하는지는 아래 코드 사용 예제를 참고해주세요.)
+    """
+    # 문제 1.
+      1 이상의 양수를 입력받아 입력받은 수부터 0까지 구하는 함수를 작성해주세요.
+      재귀함수를 꼭 사용해주셔야합니다.
+      result_list안에 결과 값을 넣어주세요.
+      (result_list를 어떻게 사용하는지는 아래 코드 사용 예제를 참고해주세요.)
 
-		해당 코드 사용 예제
-			pos = int(input("input : ")) # 5
-			result_list = []
-			print_to_zero_pos(pos, result_list)
-			print(result_list) # [5,4,3,2,1,0]
-	"""
-	pass #### 문제 풀 때 pass를 지워주세요 #####
+      해당 코드 사용 예제
+        pos = int(input("input : ")) # 5
+        result_list = []
+        print_to_zero_pos(pos, result_list)
+        print(result_list) # [5,4,3,2,1,0]
+    """
+    if n < 0 :
+      return
+    result_list.append(n)
+    print_to_zero_pos(n-1, result_list)
 
 
 @counter
 def print_to_zero_neg(n, result_list):
-	"""
-	# 문제 2.
-		-1 이하의 음수를 입력받아 입력받은 수부터 0까지 구하는 함수를 작성해주세요.
-		재귀함수를 꼭 사용해주셔야합니다.
-		result_list안에 결과 값을 넣어주세요.
-		(result_list를 어떻게 사용하는지는 아래 코드 사용 예제를 참고해주세요.)
+    """
+    # 문제 2.
+      -1 이하의 음수를 입력받아 입력받은 수부터 0까지 구하는 함수를 작성해주세요.
+      재귀함수를 꼭 사용해주셔야합니다.
+      result_list안에 결과 값을 넣어주세요.
+      (result_list를 어떻게 사용하는지는 아래 코드 사용 예제를 참고해주세요.)
 
-		해당 코드 사용 예제
-			neg = int(input("input : ")) # -3
-			result_list_neg = []
-			print_to_zero_neg(neg, result_list_neg)
-			print(result_list_neg) #[-3,-2,-1,0]
-	"""
-	pass #### 문제 풀 때 pass를 지워주세요 #####
- 
+      해당 코드 사용 예제
+        neg = int(input("input : ")) # -3
+        result_list_neg = []
+        print_to_zero_neg(neg, result_list_neg)
+        print(result_list_neg) #[-3,-2,-1,0]
+    """
+    if n > 0 :
+      return
+    result_list.append(n)
+    print_to_zero_neg(n+1, result_list)

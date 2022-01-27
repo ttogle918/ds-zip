@@ -46,6 +46,39 @@ class counter:
         return self.function(*args, **kwargs)
 
 
+
 @counter 
-def print_to_zero_pos_neg(nums, dir):
-    pass #### 문제 풀 때 pass를 지워주세요 #####
+def print_to_zero_pos_neg(nums, ddir, n=0):  # nums : str -> list, ddir = dic()
+    if len(nums) == 0 :
+      print(ddir)
+      return
+
+    if type(nums) is str :    # start
+      print(nums)
+      nums = nums.split(',')
+      ddir = {n : [] for n in nums}
+      print_to_zero_pos_neg(nums, ddir, int(nums[0]))
+      print(ddir)
+      return ddir
+
+    # nums가 list일 때
+    # n==0 or 주어진 값이 '0'일 때
+    if (n == 0) or (nums[0] == '0') :
+      ddir[nums[0]].append('0')
+      if len(nums) <= 1 :
+        return
+      print_to_zero_pos_neg(nums[1:], ddir, int(nums[1]))  # next nums
+      return
+
+    if n > 0 :
+      ddir[nums[0]].append(str(n))
+      print_to_zero_pos_neg(nums, ddir, n-1)
+      return
+
+    if n < 0 :
+      ddir[nums[0]].append(str(n))
+      print_to_zero_pos_neg(nums, ddir, n+1)
+      return
+
+    return ddir
+print_to_zero_pos_neg('-16,19,5,10,-3,-6', {})

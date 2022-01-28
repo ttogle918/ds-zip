@@ -67,11 +67,10 @@ def part3(li):
   if len(li) == 0 :
     return
   if len(li) == 1 :
-    return str(li[0])
+    return str(li[0][0])
   unique_list = []
   for l in li :
-    unique_list += list(set(l))
-
+    unique_list.extend(set(l))
 
   unique_list = set(unique_list)  # 중복제거
   
@@ -79,13 +78,4 @@ def part3(li):
     return str(unique_list.pop())
   
   length = len(li) // 2
-  return ('('+''.join(part3([row[:length] for row in li[:length]])) + ''.join(part3([row[length:] for row in li[:length]])) + ''.join(part3([row[:length] for row in li[length:]])) + ''.join(part3([row[length:] for row in li[length:]])) +')').replace('[', '').replace(']','')
-
-print(part3([ [1,1,1,1,0,0,0,0],
-            [1,1,1,1,0,0,0,0],
-            [0,0,0,1,1,1,0,0],
-            [0,0,0,1,1,1,0,0],
-            [1,1,1,1,0,0,0,0],
-            [1,1,1,1,0,0,0,0],
-            [1,1,1,1,0,0,1,1],
-            [1,1,1,1,0,0,1,1]]))
+  return '('+''.join(part3([row[:length] for row in li[:length]])) + ''.join(part3([row[length:] for row in li[:length]])) + ''.join(part3([row[:length] for row in li[length:]])) + ''.join(part3([row[length:] for row in li[length:]])) +')'

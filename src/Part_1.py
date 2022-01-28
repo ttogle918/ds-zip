@@ -43,7 +43,6 @@ def quick_sort(li):
       return li
 
     pivot = li[0]
-    length = len(li)
 
     list_1 = []
     list_2 = []

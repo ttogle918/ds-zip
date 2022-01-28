@@ -79,7 +79,7 @@ def part3(li):
     return str(unique_list.pop())
   
   length = len(li) // 2
-  return '('+part3([row[:length] for row in li[:length]]) + part3([row[length:] for row in li[:length]]) + part3([row[:length] for row in li[length:]]) + part3([row[:length] for row in li[:length]]) +')'
+  return ('('+''.join(part3([row[:length] for row in li[:length]])) + ''.join(part3([row[length:] for row in li[:length]])) + ''.join(part3([row[:length] for row in li[length:]])) + ''.join(part3([row[length:] for row in li[length:]])) +')').replace('[', '').replace(']','')
 
 print(part3([ [1,1,1,1,0,0,0,0],
             [1,1,1,1,0,0,0,0],

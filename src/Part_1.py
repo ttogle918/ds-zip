@@ -35,4 +35,21 @@ def quick_sort(li):
     작성되어있는 quick_sort함수를 재귀함수로 사용해주세요.
     quick_sort함수 내부에 새로운 재귀함수로 구현하시면 안됩니다. 
     """
-    pass
+    if len(li) < 2 :
+      return li
+    if len(li) == 2 :
+      if li[0] > li[1] :
+        li[0], li[1] = li[1], li[0]    # swap
+      return li
+
+    pivot = li[0]
+    length = len(li)
+
+    list_1 = []
+    list_2 = []
+    for v in li[1:] :
+      if v <= pivot :
+        list_1.append(v)
+      else : 
+        list_2.append(v)
+    return quick_sort(list_1) + [pivot] + quick_sort(list_2)

@@ -64,4 +64,28 @@ Advanced Requirements
 """
 
 def part3(li):
-    pass
+  if len(li) == 0 :
+    return
+  if len(li) == 1 :
+    return str(li[0])
+  unique_list = []
+  for l in li :
+    unique_list += list(set(l))
+
+
+  unique_list = set(unique_list)  # 중복제거
+  
+  if len(unique_list) == 1 :   # 같은 숫자라면
+    return str(unique_list.pop())
+  
+  length = len(li) // 2
+  return '('+part3([row[:length] for row in li[:length]]) + part3([row[length:] for row in li[:length]]) + part3([row[:length] for row in li[length:]]) + part3([row[:length] for row in li[:length]]) +')'
+
+print(part3([ [1,1,1,1,0,0,0,0],
+            [1,1,1,1,0,0,0,0],
+            [0,0,0,1,1,1,0,0],
+            [0,0,0,1,1,1,0,0],
+            [1,1,1,1,0,0,0,0],
+            [1,1,1,1,0,0,0,0],
+            [1,1,1,1,0,0,1,1],
+            [1,1,1,1,0,0,1,1]]))

@@ -10,13 +10,17 @@ class counter:
 
 @counter
 def addNumber(num) :
-    pass
-
+    if num <= 1 :
+      return 1
+    return num + addNumber(num-1)
 
 @counter
 def countDown(num, li) :
-    pass
-
+    if num <= 0 :
+      return li + ['발사!!']
+    return [num] + countDown(num-1, li)
 @counter
 def printStar(num, li) :
-    pass
+    if num <= 1 :
+      return ['*']
+    return printStar(num-1, li) + ['*'*num]

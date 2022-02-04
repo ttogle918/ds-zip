@@ -20,5 +20,12 @@ Advanced Requirements
 """
 
 def hashing_sum(hashing_list, sum_value):
-    hash_table = pass
-    hashing_result = pass
+    hashing_result = []
+
+    for i, v in enumerate(hashing_list[:-1]) :
+      for j in hashing_list[i+1:] :
+        if v + j == sum_value :
+          t = (j, v)
+          hashing_result.append(t)
+
+    return hashing_result

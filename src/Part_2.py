@@ -27,4 +27,5 @@ Bare Minimum Requirements
 """
 
 def insert_hash(hash_table, key, value):
-    pass #### 문제 풀 때는 pass를 지워주세요 ####
+
+    hash_table[key % len(hash_table)].append(value)

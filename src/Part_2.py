@@ -29,9 +29,15 @@ Bare Minimum Requirements
 def search_shortest_route(connection_info, start_node, end_node, route=[]):
     route = route + [start_node]
     if start_node == end_node:
-        pass
+        return route
     if not connection_info.__contains__(start_node):
-        pass
-    shortest = None
+        return []
+    
     for node in connection_info[start_node]:
-        pass
+      if node == end_node :
+          route.append(node)
+          return route
+
+    for node in connection_info[start_node]:    
+      if node not in route :
+          return search_shortest_route(connection_info, node, end_node, route)

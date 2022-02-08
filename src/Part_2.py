@@ -26,10 +26,23 @@ Advanced Requirements
 """
 
 def char_combi(num):
-    def dfs():
+    def dfs(test_dict, n, li=[]):
+        new_list = []
         
-        ##### 코드를 작성해주세요 #####
+        if len(li) == 0 :
+          if len(n) == 1 :
+            return [s for s in test_dict[n]]
+
+          return dfs(test_dict, n[1:], [s for s in test_dict[n[0]]])
+        
+        for i in li :
+          for j in test_dict[n[0]] :
+            new_list.append(i+j)
+        if len(n) == 1 :  
+          return new_list
+
+        return dfs(test_dict, n[1:], new_list)        
 
     test_dict = {"2": "qwe", "3": "asd", "4": "zxc"}
-
+    test_result = dfs(test_dict, num)
     return test_result

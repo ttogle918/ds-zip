@@ -41,10 +41,12 @@ def word_logic(num, word_dic):  # num : 100단위 값
       word_result = word_dic[d_100] + ' ' + word_dic[100] + ' and'
 
     if m < 21 :   # 예외 글자
-      return (word_result + ' ' + word_dic[m]).strip()
+      return word_result + ' ' + word_dic[m]
     
     d_10, m = divmod(m, 10)   # d : 10의 자리, m : 1의자리
 
+    if m == 0 :
+      return (word_result + ' ' + word_dic[d_10*10]).strip()
     return (word_result + ' ' + word_dic[d_10*10] + '-' + word_dic[m]).strip()
     
 

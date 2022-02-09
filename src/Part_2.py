@@ -21,4 +21,11 @@ Greedy를 활용하면서 알고리즘의 흐름을 이해해보자.
 def changes(price):
     change = 1000 - price
     coin_list = [700, 400, 300, 100, 50, 10]
-    pass
+    answer = {}
+    i = 0
+
+    while i < len(coin_list) and change >= coin_list[-1] :
+      mdiv, change = divmod(change, coin_list[i])
+      if mdiv > 0 : answer[coin_list[i]] = mdiv
+      i += 1
+    return answer

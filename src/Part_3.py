@@ -27,12 +27,44 @@ Advanced Requirements
         출력 
         One million, forty-three thousand, two hundred and eighty-three.
 """
+# import inflect
+def word_logic(num, word_dic):  # num : 100단위 값
+    print(num)
+    if num in word_dic :
+      return word_dic[num]
 
-def word_logic(num):
-    ##### 소스코드 작성 #####
-    return word_result
+    word_result = ''
+    
+    # 큰 수부터 구해야 예외글자를 구할 수 있다.
+    d_100, m = divmod(num, 100)   # 100의 자리
+    if d_100 > 0 :
+      word_result = word_dic[d_100] + ' ' + word_dic[100] + ' and'
+
+    if m < 21 :   # 예외 글자
+      return (word_result + ' ' + word_dic[m]).strip()
+    
+    d_10, m = divmod(m, 10)   # d : 10의 자리, m : 1의자리
+
+    return (word_result + ' ' + word_dic[d_10*10] + '-' + word_dic[m]).strip()
     
 
 def number_logic(num):
-    ##### 소스코드 작성 #####
+    word_dic = {0 : 'zero', 1 : 'one', 2 : 'two', 3 : 'three', 4 : 'four', 5 : 'five', 6 : 'six', 7 : 'seven', 8 : 'eight', 9 : 'nine', 10 : 'ten', 
+                11 : 'eleven', 12 : 'twelve', 13 : 'thirteen', 14 : 'fourteen', 15: 'fifteen', 16: 'sisteen', 17 : 'seventeen', 18 : 'eighteen', 19 : 'nineteen', 20 : 'twenty',
+                30 : 'thirty', 40 : 'forty', 50 : 'fifty', 60 : 'sixty', 70 : 'seventy', 80 : 'eighty', 90 : 'ninety', 
+                100 : 'hundred', 1000 : 'thousand', 1000000 : 'million'}
+    answer = ''
+    i = 1000
+    # 1000단위씩 나누기
+    d, m = 1, num
+    while d > 0 :
+      d, m = divmod(num, i)   # m : 1000 미만 값
+      m = m // (i / 1000)
 
+      if d == 0 : 
+        answer = word_logic(m, word_dic) + ' ' + answer
+      else : 
+        answer = word_dic[i] + ', ' + word_logic(m, word_dic) +' '+ answer
+      i *= 1000
+    answer = answer.capitalize().rstrip() + '.'
+    return answer

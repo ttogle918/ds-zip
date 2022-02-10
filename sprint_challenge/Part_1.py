@@ -4,6 +4,6 @@
 import hashlib
 
 def sha_hash_function():
-  h = # hashlib 모듈관련 메소드 
-  pass
+  h = hashlib.sha256('Test Name'.encode()).hexdigest()# hashlib 모듈관련 메소드 
+  return [h]
 
